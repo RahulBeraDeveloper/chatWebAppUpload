@@ -2,7 +2,8 @@
 import Navbar from "./components/Navbar.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
-import SignUpPage from "./pages/SignUpPage.jsx";
+import SignUpPage from "./pages/SignupPage.jsx";
+
 import LoginPage from './pages/LoginPage.jsx';
 import SettingsPage from './pages/SettingsPages.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
