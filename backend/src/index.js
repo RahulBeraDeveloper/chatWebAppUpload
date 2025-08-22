@@ -21,14 +21,16 @@ console.log("CLOUDINARY_API_SECRET:", process.env.CLOUDINARY_API_KEY_SECRET ? "L
 
 const PORT = process.env.PORT || 5001;
 
-app.use(cookieParser());
-app.use(express.json()); //It helps to parse the incoming request with JSON payloads
+
 app.use(cors({
   origin: "https://chatwebappupload-1.onrender.com",
   credentials: true
 }
   
 ));
+app.use(cookieParser());
+app.use(express.json()); //It helps to parse the incoming request with JSON payloads
+
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
