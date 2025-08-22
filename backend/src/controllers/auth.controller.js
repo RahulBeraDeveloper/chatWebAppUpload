@@ -91,7 +91,7 @@ export const login = async (req, res) => {
     try {
       const { profilePic } = req.body;
       const userId = req.user._id;
-  
+      console.log("userId==============>",userId)
       if (!profilePic) {
         return res.status(400).json({ message: "Profile pic is required" });
       }
