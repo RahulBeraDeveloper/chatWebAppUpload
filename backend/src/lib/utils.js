@@ -15,10 +15,10 @@
 // }
 
 
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 
-export const generateToken = (userId,res) => {
-    const token = jwt.sign({userId}, process.env.JWT_SECRET, {expiresIn: "7d"});
+// export const generateToken = (userId,res) => {
+//     const token = jwt.sign({userId}, process.env.JWT_SECRET, {expiresIn: "7d"});
   
   
 //     res.cookie("jwt", token, 
@@ -33,12 +33,32 @@ export const generateToken = (userId,res) => {
 
 
 
-res.cookie("jwt", token, {
-  maxAge: 7 * 24 * 60 * 60 * 1000,
-  httpOnly: true,
-  sameSite: process.env.NODE_ENV === "development" ? "Lax" : "None",
-  secure: process.env.NODE_ENV === "development" ? false : true,
-});
-return token;
+// res.cookie("jwt", token, {
+//   maxAge: 7 * 24 * 60 * 60 * 1000,
+//   httpOnly: true,
+//   sameSite: process.env.NODE_ENV === "development" ? "Lax" : "None",
+//   secure: process.env.NODE_ENV === "development" ? false : true,
+// });
+// return token;
 
-}
+// }
+
+
+
+import jwt from "jsonwebtoken";
+
+export const generateToken = (userId, res) => {
+  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
+    expiresIn: "7d",
+  });
+
+  res.cookie("jwt", token, {
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    httpOnly: true,                  // not accessible by JS
+    sameSite: "None",                // required for cross-site cookies
+    secure: process.env.NODE_ENV !== "development", // true in production
+  });
+
+  return token;
+};
+
